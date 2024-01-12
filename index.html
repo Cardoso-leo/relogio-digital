@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #333; /* Cor de fundo mais escura */
+            color: #fff; /* Cor do texto */
+            font-family: 'Roboto', sans-serif; /* Fonte moderna */
+            overflow: hidden;
+        }
+
+        .clock-container {
+            background-color: #222; /* Cor do subfundo retangular */
+            border-radius: 10px; /* Borda arredondada */
+            padding: 20px; /* Espaçamento interno */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .clock {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .time-box {
+            margin: 0 10px;
+            font-size: 2em;
+            animation: fadeIn 2s; /* Adicionando uma animação de fade-in */
+        }
+
+        .divider {
+            height: 2em;
+            width: 2px;
+            background-color: #fff; /* Cor das divisórias */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+    <title>Digital Clock</title>
+</head>
+<body>
+    <div class="clock-container">
+        <div class="clock">
+            <div class="time-box" id="hours"></div>
+            <div class="divider"></div>
+            <div class="time-box" id="minutes"></div>
+            <div class="divider"></div>
+            <div class="time-box" id="seconds"></div>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+
+            document.getElementById('hours').innerText = hours;
+            document.getElementById('minutes').innerText = minutes;
+            document.getElementById('seconds').innerText = seconds;
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+
+        // Initial call to display the clock immediately
+        updateClock();
+    </script>
+</body>
+</html>
